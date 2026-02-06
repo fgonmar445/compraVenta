@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Productos</h2>
+
+{% for producto in productos %}
+    <div class="card p-3 mb-3">
+        <h3>{{ producto.titulo }}</h3>
+        <p>{{ producto.precio }} €</p>
+        <a href="/producto/{{ producto.id }}/">Ver detalle</a>
+    </div>
+{% empty %}
+    <p>No hay productos disponibles.</p>
+{% endfor %}
+{% endblock %}

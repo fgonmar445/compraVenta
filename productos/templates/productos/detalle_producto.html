@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ producto.titulo }}{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h2>{{ producto.titulo }}</h2>
+    <p class="text-muted">{{ producto.precio }} €</p>
+    <p>{{ producto.descripcion }}</p>
+
+    <p><strong>Vendedor:</strong> {{ producto.vendedor.username }}</p>
+
+    {% if user == producto.vendedor %}
+        <a href="/producto/{{ producto.id }}/editar/" class="btn btn-warning">Editar</a>
+        <a href="/producto/{{ producto.id }}/eliminar/" class="btn btn-danger">Eliminar</a>
+    {% endif %}
+</div>
+{% endblock %}

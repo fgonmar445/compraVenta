@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Formulario{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Formulario de producto</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="card p-4 shadow-sm">
+        {{ form.as_p }}
+        <button class="btn btn-primary mt-3">Guardar</button>
+    </div>
+</form>
+{% endblock %}

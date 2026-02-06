@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Eliminar{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">¿Eliminar producto?</h2>
+
+<div class="alert alert-danger">
+    ¿Seguro que quieres eliminar <strong>{{ object.titulo }}</strong>?
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger">Eliminar</button>
+    <a href="/mis-productos/" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
