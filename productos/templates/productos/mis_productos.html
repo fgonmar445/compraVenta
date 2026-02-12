@@ -1,37 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container py-4">
+<div class="container py-5">
 
-    <h2 class="text-center mb-4">Productos disponibles</h2>
+    <!-- Título -->
+    <h2 class="text-center mb-4 fw-bold">Productos disponibles</h2>
 
-    <div class="row justify-content-center g-4">
+    <!-- Botón añadir producto -->
+    <div class=" mb-4">
+        <a href="{% url 'producto_nuevo' %}" class="btn btn-success btn-lg px-4 shadow-sm">
+            <i class="bi bi-plus-circle"></i> Añadir producto
+        </a>
+    </div>
+
+    <!-- Grid de productos -->
+    <div class="row g-4 justify-content-center">
+
         {% for producto in productos %}
-        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-            <div class="card shadow-sm border-0 rounded-4" style="max-width: 320px; margin: auto;">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4 d-flex">
+            <div class="card shadow-sm border-0 rounded-4 w-100">
 
-                <div class="card-body">
-                    <h5 class="card-title fw-semibold">{{ producto.titulo }}</h5>
+                <div class="card-body d-flex flex-column">
 
-                    <p class="card-text text-muted small">
+                    <!-- Título -->
+                    <h5 class="card-title fw-semibold text-dark">
+                        {{ producto.titulo }}
+                    </h5>
+
+                    <!-- Descripción -->
+                    <p class="card-text text-muted small mb-3">
                         {{ producto.descripcion|truncatewords:12 }}
                     </p>
 
-                    <p class="fw-bold text-primary fs-5 mb-3">
+                    <!-- Precio -->
+                    <p class="fw-bold text-primary fs-5 mb-4">
                         {{ producto.precio }} €
                     </p>
 
+                    <!-- Botón -->
                     <a href="{% url 'detalle_producto' producto.pk %}" 
-                       class="btn btn-sm btn-outline-primary w-100">
+                       class="btn btn-outline-primary w-100 mt-auto">
                         Ver detalle
                     </a>
+
                 </div>
 
             </div>
         </div>
         {% empty %}
-        <p class="text-center">No hay productos disponibles.</p>
+        <div class="col-12 text-center mt-4">
+            <p class="text-muted fs-5">No hay productos disponibles.</p>
+        </div>
         {% endfor %}
+
     </div>
 
 </div>

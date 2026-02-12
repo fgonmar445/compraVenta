@@ -41,6 +41,11 @@ class ProductoCreateView(CreateView):
         form.instance.vendedor = self.request.user
         return super().form_valid(form)
 
+    def form_invalid(self, form):
+        print("ERRORES:", form.errors)
+        return super().form_invalid(form)
+
+
 
 class ProductoUpdateView(UpdateView):
     model = Producto

@@ -14,14 +14,25 @@ class ProductoForm(forms.ModelForm):
             "categoria": forms.Select(attrs={"class": "form-select"}),
         }
 
+
     def clean_precio(self):
         precio = self.cleaned_data.get("precio")
-        if precio is not None and precio <= 0:
+
+        if precio is None:
+            raise forms.ValidationError("Debes introducir un precio.")
+
+        if precio <= 0:
             raise forms.ValidationError("El precio debe ser mayor que 0.")
+
         return precio
 
     def clean_descripcion(self):
         descripcion = self.cleaned_data.get("descripcion")
-        if descripcion and len(descripcion) < 10:
+
+        if not descripcion:
+            raise forms.ValidationError("La descripción es obligatoria.")
+
+        if len(descripcion) < 10:
             raise forms.ValidationError("La descripción debe tener al menos 10 caracteres.")
+
         return descripcion

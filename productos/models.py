@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django import forms
+
 
 
 class Categoria(models.Model):
@@ -30,23 +32,5 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.titulo
-
-    def clean(self):
-        # Precio no negativo
-        if self.precio < 0:
-            raise ValidationError("El precio no puede ser negativo.")
-
-        # Un usuario no puede tener dos productos con el mismo título
-        repetido = Producto.objects.filter(
-            vendedor=self.vendedor,
-            titulo=self.titulo
-        )
-        if self.pk:
-            repetido = repetido.exclude(pk=self.pk)
-
-        if repetido.exists():
-            raise ValidationError("Ya tienes un producto con ese título.")
-
-    def save(self, *args, **kwargs):
-        self.clean()
-        super().save(*args, **kwargs)
+        
+    

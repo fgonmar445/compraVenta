@@ -13,7 +13,6 @@
             Compra y vende productos fácilmente entre usuarios reales.
         </p>
 
-        <!-- Botón añadir producto -->
         {% if user.is_authenticated %}
             <a href="{% url 'producto_nuevo' %}" class="btn btn-success btn-lg mt-3 px-4">
                 <i class="bi bi-plus-circle"></i> Añadir producto
