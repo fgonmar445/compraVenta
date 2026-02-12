@@ -2,16 +2,33 @@
 {% block title %}{{ producto.titulo }}{% endblock %}
 
 {% block content %}
-<div class="card shadow-sm p-4">
-    <h2>{{ producto.titulo }}</h2>
-    <p class="text-muted">{{ producto.precio }} €</p>
-    <p>{{ producto.descripcion }}</p>
+<div class="container py-4">
 
-    <p><strong>Vendedor:</strong> {{ producto.vendedor.username }}</p>
+    <div class="card shadow-sm border-0 p-4 mx-auto" style="max-width: 650px;">
 
-    {% if user == producto.vendedor %}
-        <a href="/producto/{{ producto.id }}/editar/" class="btn btn-warning">Editar</a>
-        <a href="/producto/{{ producto.id }}/eliminar/" class="btn btn-danger">Eliminar</a>
-    {% endif %}
+        <!-- Título y precio -->
+        <h2 class="fw-bold mb-2">{{ producto.titulo }}</h2>
+        <p class="text-primary fs-4 fw-semibold mb-3">{{ producto.precio }} €</p>
+
+        <!-- Descripción -->
+        <p class="text-muted mb-4">{{ producto.descripcion }}</p>
+
+        <!-- Información del vendedor -->
+        <div class="mb-4">
+            <p class="mb-1"><strong>Vendedor:</strong> {{ producto.vendedor.username }}</p>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="d-flex gap-2">
+            <a href="{% url 'lista_productos' %}" class="btn btn-outline-secondary">Volver</a>
+
+            {% if user == producto.vendedor %}
+                <a href="{% url 'producto_editar' producto.pk %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'producto_eliminar' producto.pk %}" class="btn btn-danger">Eliminar</a>
+            {% endif %}
+        </div>
+
+    </div>
+
 </div>
 {% endblock %}

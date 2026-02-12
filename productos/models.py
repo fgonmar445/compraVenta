@@ -11,11 +11,22 @@ class Categoria(models.Model):
 
 
 class Producto(models.Model):
+
+    CATEGORIAS = [
+        ("tecnologia", "Tecnología"),
+        ("hogar", "Hogar"),
+        ("moda", "Moda"),
+        ("deporte", "Deporte"),
+        ("vehiculos", "Vehículos"),
+        ("otros", "Otros"),
+    ]
+
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=10, decimal_places=2)
+    categoria = models.CharField(max_length=20, choices=CATEGORIAS)
     vendedor = models.ForeignKey(User, on_delete=models.CASCADE)
-    categorias = models.ManyToManyField(Categoria, blank=True)
+
 
     def __str__(self):
         return self.titulo

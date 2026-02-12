@@ -1,14 +1,33 @@
 {% extends "base.html" %}
-{% block title %}Formulario{% endblock %}
+{% block title %}Nuevo producto{% endblock %}
 
 {% block content %}
-<h2 class="mb-4">Formulario de producto</h2>
+<div class="container py-4">
 
-<form method="post">
-    {% csrf_token %}
-    <div class="card p-4 shadow-sm">
-        {{ form.as_p }}
-        <button class="btn btn-primary mt-3">Guardar</button>
-    </div>
-</form>
+    <h2 class="mb-4 fw-bold">Añadir producto</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="card p-4 shadow-sm border-0 rounded-4" style="max-width: 600px; margin: auto;">
+
+            {% for field in form %}
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">{{ field.label }}</label>
+                    {{ field }}
+
+                    {% if field.errors %}
+                        <div class="text-danger small mt-1">
+                            {{ field.errors|striptags }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button class="btn btn-primary w-100 mt-3">Guardar producto</button>
+        </div>
+
+    </form>
+
+</div>
 {% endblock %}

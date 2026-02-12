@@ -7,12 +7,16 @@ from .forms import ProductoForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
+
+
 def index(request):
-    return render(request, "productos/index.html")
+    productos = Producto.objects.all()[:3]
+    return render(request, "productos/index.html", {"productos": productos})
+
 
 
 def lista_productos(request):
-    productos = Producto.objects.all().order_by("-fecha_publicacion")
+    productos = Producto.objects.all()
     return render(request, "productos/lista_productos.html", {"productos": productos})
 
 

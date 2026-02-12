@@ -2,9 +2,101 @@
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-<div class="text-center">
-    <h1 class="mb-4">Bienvenido a CompraVenta</h1>
-    <p class="lead">Compra y vende productos fácilmente entre usuarios.</p>
-    <a href="/productos/" class="btn btn-primary btn-lg mt-3">Ver productos</a>
+<div class="container py-5">
+
+    <!-- Hero principal -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">
+            Bienvenido a <span class="text-primary">CompraVenta</span>
+        </h1>
+        <p class="lead mt-3 text-muted">
+            Compra y vende productos fácilmente entre usuarios reales.
+        </p>
+
+        <!-- Botón añadir producto -->
+        {% if user.is_authenticated %}
+            <a href="{% url 'producto_nuevo' %}" class="btn btn-success btn-lg mt-3 px-4">
+                <i class="bi bi-plus-circle"></i> Añadir producto
+            </a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-lg mt-3 px-4">
+                Inicia sesión para añadir productos
+            </a>
+        {% endif %}
+    </div>
+
+    <!-- Sección de ventajas -->
+    <div class="row text-center g-4 mb-5">
+        <div class="col-md-4">
+            <div class="p-4 border rounded-4 shadow-sm h-100 bg-white">
+                <i class="bi bi-cart-check display-5 text-primary"></i>
+                <h4 class="mt-3 fw-semibold">Compra fácil</h4>
+                <p class="text-muted small">
+                    Encuentra miles de productos publicados por usuarios como tú.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="p-4 border rounded-4 shadow-sm h-100 bg-white">
+                <i class="bi bi-cash-coin display-5 text-primary"></i>
+                <h4 class="mt-3 fw-semibold">Vende rápido</h4>
+                <p class="text-muted small">
+                    Publica tus artículos en minutos y llega a compradores interesados.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="p-4 border rounded-4 shadow-sm h-100 bg-white">
+                <i class="bi bi-shield-check display-5 text-primary"></i>
+                <h4 class="mt-3 fw-semibold">Seguro y confiable</h4>
+                <p class="text-muted small">
+                    Interacciones entre usuarios verificadas y un entorno seguro.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Productos recientes -->
+    <h2 class="text-center mb-4 fw-bold">Productos recientes</h2>
+
+    <div class="row g-4 mb-5 justify-content-center">
+        {% for producto in productos %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-semibold">{{ producto.titulo }}</h5>
+
+                    <p class="card-text text-muted small mb-2">
+                        {{ producto.descripcion|truncatewords:12 }}
+                    </p>
+
+                    <p class="fw-bold text-primary fs-5 mb-3">
+                        {{ producto.precio }} €
+                    </p>
+
+                    <a href="{% url 'detalle_producto' producto.pk %}" 
+                       class="btn btn-outline-primary btn-sm mt-auto w-100">
+                        Ver más
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No hay productos disponibles.</p>
+        {% endfor %}
+    </div>
+
+    <!-- CTA final -->
+    <div class="text-center mt-5">
+        <h3 class="fw-semibold">¿Listo para empezar?</h3>
+        <a href="/productos/" class="btn btn-primary btn-lg mt-3 px-4">
+            Explorar productos
+        </a>
+    </div>
+
 </div>
 {% endblock %}
