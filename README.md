@@ -280,49 +280,47 @@ El formulario de productos incluye validaciones personalizadas:
 ### Página Principal
 _Aquí se mostrará la vista de inicio con productos destacados_
 
-<!-- Insertar captura de pantalla de la página principal -->
+<img src="./img/index.png" alt="inicio">
 
 ---
 
 ### Lista de Productos
 _Vista de todos los productos disponibles con filtros por categoría_
 
-<!-- Insertar captura de pantalla de la lista de productos -->
+<img src="./img/lista_prod.png" alt="lista_productos">
 
 ---
 
 ### Detalle de Producto
 _Información completa de un producto específico_
-
-<!-- Insertar captura de pantalla del detalle de producto -->
+<img src="./img/detalle.png" alt="lista_productos">
 
 ---
 
 ### Mis Productos
 _Panel personal con los productos publicados por el usuario_
+<img src="./img/mis_prod.png" alt="lista_productos">
 
-<!-- Insertar captura de pantalla del panel de mis productos -->
 
 ---
 
 ### Formulario de Nuevo Producto
 _Interfaz para añadir un nuevo producto a la venta_
+<img src="./img/nuevo.png" alt="lista_productos">
 
-<!-- Insertar captura de pantalla del formulario de creación -->
 
 ---
 
 ### Formulario de Edición
 _Interfaz para modificar un producto existente_
+<img src="./img/editar.png" alt="lista_productos">
 
-<!-- Insertar captura de pantalla del formulario de edición -->
 
 ---
 
 ### Confirmación de Eliminación
 _Pantalla de confirmación antes de eliminar un producto_
-
-<!-- Insertar captura de pantalla de confirmación de eliminación -->
+<img src="./img/eliminar.png" alt="lista_productos">
 
 ---
 
@@ -385,7 +383,7 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para má
 
 Para preguntas o sugerencias, puedes contactarme en:
 - Email: tu-email@ejemplo.com
-- GitHub: [@tu-usuario](https://github.com/tu-usuario)
+- GitHub: [@fgonmar445](https://github.com/fgonmar445)
 
 ---
 
