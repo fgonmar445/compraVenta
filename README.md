@@ -382,7 +382,7 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para má
 ## 📞 Contacto
 
 Para preguntas o sugerencias, puedes contactarme en:
-- Email: tu-email@ejemplo.com
+- Email: felipemarbouh@gmail.com
 - GitHub: [@fgonmar445](https://github.com/fgonmar445)
 
 ---
